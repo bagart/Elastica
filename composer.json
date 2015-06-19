@@ -1,5 +1,5 @@
 {
-    "name": "ruflin/elastica",
+    "name": "bagart/elastica",
     "description": "Elasticsearch Client",
     "keywords": ["search","client"],
     "homepage": "http://elastica.io/",
