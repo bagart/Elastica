@@ -117,7 +117,14 @@ class Response
             return false;
         }
 
-        return array_key_exists('failures', $shardsStatistics);
+        return array_key_exists('failures', $shardsStatistics)
+            || !(
+                defined('ELASTICA_SUCCESS_NODE_MINIMAL_PERSENT')
+                && !empty($shardsStatistics['successful'])
+                && !empty($shardsStatistics['total'])
+                && $shardsStatistics['successful'] / $shardsStatistics['total'] > ELASTICA_SUCCESS_NODE_MINIMAL_PERSENT
+            );
+//        return array_key_exists('failures', $shardsStatistics);
     }
 
     /**
